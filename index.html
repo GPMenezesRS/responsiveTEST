@@ -1,0 +1,138 @@
+<html>
+	<head>
+		<title>Home</title>
+		<meta charset="utf-8"/>
+	</head>
+	
+	<style>
+		#cabecalho{
+			width: 100%;
+			height: 40%;
+			background-color: red;
+			border-radius: 1%;
+		}
+		#menu{
+			width: 100%;
+			height: 10%;
+			background-color: gray;
+			border-radius: 1%;
+		}
+		h1{
+			font-size: 50px;
+			color: white;
+			text-align: center;
+			padding-top:5%; 
+		}
+		a{
+			font-size: 20px;
+			color: white;
+			margin-left: 20%;
+			margin-right: 2%;
+			font-family: Consolas;
+			text-decoration: none;
+		}		
+		.m1{
+			width:100%;
+			height:100%;
+			float:left;
+			width:20%;
+			background-color:#B5B5B5
+		}
+		.m1:hover{
+			background-color:#483D8B;
+			cursor:pointer;
+			text-shadow: 2px 2px black;
+		}
+	</style>
+	
+	<script>
+		function fontColor (){
+			if(titulo.style.color=="black"){
+				titulo.style.color = "white";
+			}
+			else{
+				titulo.style.color = "black";
+			}
+		}
+		
+		function troca(pagina){
+			if (pagina == "formFesta")
+			{
+				formFesta.style.display = "block";
+				informeCep.style.display = "none";
+			}
+			if (pagina == "informeCep")
+			{
+				formFesta.style.display = "none";
+				informeCep.style.display = "block";
+			}	
+		}
+		
+		function comprar(){
+			var nome = txtNome.value;
+			var idade = txtIdade.value;
+			var vip = txtVip.value;
+			var comum = txtComum.value;
+			
+			if (idade>=18){
+				idade = "Entrada autorizada." 
+			}
+			else{
+				idade = "Entrada somente acompanhado com um responsável."
+			}
+			
+			alert("Olá "+nome+"\n"+idade)
+
+		}
+	</script>
+	
+	<body>
+		<div id="cabecalho">
+			<h1 id="titulo">Festival de Ofertas</h1>
+		</div>
+		<br>
+		<div id="menu">
+			<div id="item1" class="m1" onclick="troca('informeCep')">
+					<center>
+						<a>Locais</a>
+					</center>
+				</div>
+			<div id="item2" class="m1" onclick="troca('formFesta')">
+					<center>
+						<a>Cadastro</a>
+					</center>
+			</div>
+			<div id="item3"  class="m1" onclick=" fontColor('black')">
+				<center>
+					<a>Troca Cor</a>
+				</center>
+			</div>
+		</div>
+			<center>
+				<form id="formFesta" style="display:none;">
+					<br><br>
+					<label>Nome:</label>
+					<input id="txtNome" type="text" placeholder="Seu nome..."/>
+					<br><br>
+					<label>Idade:</label>
+					<input id="txtIdade" type="text" placeholder="Sua idade..."/>
+					<br><br>
+					<label>Ingresso:</label>
+					<input id="txtVip" name="ing" type="radio">Vip</input>
+					<input id="txtComum" name="ing" type="radio">Comum</input>
+					<br><br>
+					<input type="button" value="Comprar" onclick="comprar()"/>
+				</form>
+			</center>
+			
+			<center>
+				<form id="informeCep" style="display:none;">
+					<br><br>
+					<label>Cep:</label>
+					<input id="txtCep" type="text" placeholder="Seu CEP..."/>
+					<br><br>
+					<input type="button" value="Procurar" onclick="procurar()"/>
+				</form>
+			</center>
+	</body>
+</html>
