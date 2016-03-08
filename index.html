@@ -43,15 +43,28 @@
 			cursor:pointer;
 			text-shadow: 2px 2px black;
 		}
-		@media (max-width:800px){ 
-			#menu{ 
-				height: auto;
-			}
-			.m1{
-				float:none; 
-				width:100%; 
-			}
+		#menu-start{
+		display: none;
+	}
+	@media (max-width:800px){
+		#menu{
+			display: none;
 		}
+		.m1{
+			float:none;
+			width:100%;
+		}
+		#menu-start,
+		#menu-stop{
+			display: block;
+			background-color: gray;
+			text-align: center;
+			padding: 10px 0;
+		}
+		#menu-stop{
+			display: none;
+		}
+	}
 	</style>
 	
 	<script>
@@ -93,6 +106,14 @@
 			alert("Olá "+nome+"\n"+idade)
 
 		}
+		
+		function show(target){
+			document.getElementById(target).style.display = 'block';
+		}
+		
+		function hide(target){
+			document.getElementById(target).style.display = 'none';
+		}
 	</script>
 	
 	<body>
@@ -100,6 +121,14 @@
 			<h1 id="titulo">Festival de Ofertas</h1>
 		</div>
 		<br>
+		
+		<div id="menu-start" onclick="hide('menu-start');show('menu-stop');show('menu')">
+			Menu
+		</div>
+		<div id="menu-stop" onclick="hide('menu-stop');hide('menu');show('menu-start')">
+			Menu
+		</div>
+		
 		<div id="menu">
 			<div id="item1" class="m1" onclick="troca('informeCep')">
 					<center>
